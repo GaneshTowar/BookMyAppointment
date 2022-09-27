@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>BookMyAppointmnet</title>
+    <style>
+    input:checked + label {
+    background: #4169E1;
+    color: white;
+}</style>
+  </head>
+  {% load static %}
+  <body style="background-image: url('https://images.unsplash.com/photo-1634655377962-e6e7b446e7e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528&q=80');height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Appointment booker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse float-left" id="navbarNavAltMarkup">
+    <div class="navbar-nav float-left">
+      <a class="nav-item nav-link pl-6" href="#">hi {{request.user.username}}</a>
+      <a class="nav-item nav-link pl-6" href="#">log out</a>
+
+    </div>
+  </div>
+</nav>
+  <br><br>
+<h1 class="text-center">Booking appointment for {{udata.user.username}}</h1>
+  <br>
+
+  <form action="/apemail/{{udata.user.id}}" method="post">{% csrf_token %}
+
+ <div class="container ">
+        <div class="col-md-12 text-center">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required/>
+        </div></div>
+    <div class="container">
+      <div class="row row-cols-auto">
+    {%for t in a%}
+        <div class="col">
+
+    <input type="radio" class="btn-check" id="{{t}}" value="{{t}}" name="time" autocomplete="off" required style="visibility:hidden"/> time {{t}}
+          <label class="btn btn-outline-primary" for="{{t}}">Avaliable time slot </label>
+        </div>
+    {% endfor %}
+      </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 text-center">
+    <button class="align-center btn btn-primary" type="submit" >book</button>
+        </div></div>
+  </form>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

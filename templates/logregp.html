@@ -1,0 +1,75 @@
+
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BookMyAppointmnet </title>
+    <link rel="stylesheet" href="static/css/logreg.css">
+</head>
+<body >
+
+     <div class="hero" style="background-image: url(static/assets/img/yellow.jpg); background-position:center;
+  background-size:cover;
+  position:absolute;">
+         <div class="form-box">
+             <div class="button-box">
+                 <div id="btn"></div>
+               <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+               <button type="button" class="toggle-btn" onclick="register()">Register</button>
+             </div>
+         <form id="login" method="post" class="input-group" action="/plogs"> {% csrf_token %}
+                 <input type="text" class="input-field" name="slusername" id="slusername" placeholder="User Name" required>
+                 <input type="password" class="input-field" name="slpassword" id="slpassword" placeholder="Enter Password" required>
+
+             <a><button type="submit" class="log-btn">LOG IN</button></a>
+         </form>
+               <form id="register" method="post" class="input-group" action="/pregs"> {% csrf_token %}
+                 <input type="text" class="input-field" name="srusername" is="srusername" placeholder="User Name" required>
+                  <input type="email" class="input-field" name="sremail" id="sremail" placeholder="Email Id" required>
+                 <input type="password" class="input-field" class="input-field" name="srpassword" id="srpassword" placeholder="Enter Password" required>
+                   <label for="occupation"class="input-field">Choose the service you provide</label>
+                   <select name="occupation" id="occupation">
+                    <option name="occupation" value="salon">Salon</option>
+                    <option name="occupation" value="MBA_consultant">MBA Consultant</option>
+                     <option name="occupation" value="psychologists">Psychologists</option>
+                        <option name="occuption" value="physiotherapist">physiotherapist</option>
+                       </select>
+                   <input type="text" class="input-field" name="address" is="address" placeholder="address" required>
+                   <input type="time" class="input-field" name="opensat" id="opensat" placeholder="opensat" required>
+                   <input type="time" class="input-field" name="closesat" id="closesat" placeholder="closesat" required>
+                   <input type="number" class="input-field" name="duration" id="duration" placeholder="Average duration of one appointment(in mins)" required>
+                   <input type="number" class="input-field" name="fees" id="fees" placeholder="visiting fees" required>
+                   <label for="city" class="input-field">Choose a city:</label>
+<br>
+                   <select class="input-field" name="city" id="city">
+                    <option value="Pune">pune</option>
+                    <option value="Bangalore">Bangalore</option>
+                     <option value="Mumbai">Mumbai</option>
+                        <option value="Goa">Goa</option>
+                       <option value="Gujrat">Gujrat</option>
+                        </select>
+                  <a><button type="submit" class="submit-btn">REGISTER</button></a>
+               </form>
+         </div>
+     </div>
+<script>
+    var x =document.getElementById("login");
+    var y =document.getElementById("register");
+    var z =document.getElementById("btn");
+
+    function register()
+    {
+      x.style.left ="-400px";
+      y.style.left ="50px";
+      z.style.left ="110px";
+    }
+    function login()
+    {
+      x.style.left ="50px";
+      y.style.left ="450px";
+      z.style.left ="0px";
+    }
+</script>
+</body>
+</html>
+
